@@ -5,24 +5,31 @@
 #include <cstdlib>
 const uint32_t WIDTH = 800;
 const uint32_t HEIGHT = 600;
+using namespace std;
 class HelloTriangleApplication {
 public:
     void run() {
         std::cout << "Hello World!\n";
-        initVulkan();
-        mainLoop();
-        cleanup();
         initWindow();
+        cout << "window init" << endl;
+        initVulkan();
+        cout << "vulkan init" << endl;
+        mainLoop();
+        cout << "main loop" << endl;
+
+        cleanup();
+        cout << "cleanup" << endl;
     }
 
 private:
     GLFWwindow* window;
     void initWindow() {
         glfwInit();
-
+        cout << "window init" << endl;
         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
         window = glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", nullptr, nullptr);
+        std::cout << "window created" << std::endl;
     }
     void initVulkan() {
 
